@@ -1,0 +1,22 @@
+profile: once-vultr
+workdir: .colors
+
+once:
+  applications:
+    - host: vultr.bigconfig.online
+      image: ghcr.io/getcolors/colors-website:latest
+
+provider-compute: vultr
+provider-smtp: resend
+provider-dns: cloudflare
+provider-backend: local
+compute-prevent-destroy: true
+
+vultr-name: once-vultr
+vultr-region: ams
+vultr-plan: vc2-1c-1gb
+# Vultr operating systems are numeric ids; 2284 is Ubuntu 24.04 LTS x64.
+vultr-os-id: 2284
+# The "once-vultr-disposable" key uploaded to the account; its private half
+# lives in this deployment's disposable SSH agent (see .envrc.private).
+vultr-ssh-keys: faa53dae-f289-4bba-bf90-8997131ca40a

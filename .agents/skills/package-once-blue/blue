@@ -1,0 +1,16 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["package-once-blue", "blue"]
+#
+# [tool.uv.sources]
+# package-once-blue = { git = "https://github.com/getcolors/once.git", rev = "c5be85eaccb78105456509f96d4276d8de7be49e", subdirectory = "blue" }
+# blue = { git = "https://github.com/getcolors/blue.git", rev = "369c5aafea790a03b649b3513003651e672f3f57" }
+# ///
+"""Thin launcher for package-once-blue."""
+from package_once_blue import exec, run
+
+__all__ = ["run"]
+
+if __name__ == "__main__":
+    exec()
