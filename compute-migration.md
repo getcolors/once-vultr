@@ -1,6 +1,6 @@
 # Shared compute migration
 
-Installed `getcolors/once` revision `58bc6dcbc1af6ddd40609c4b81ed5420b373fe2f`. Root launchers match the
+Installed `getcolors/once` revision `173823ebdf6b90145db632e73ef8d8388cd93174`. Root launchers match the
 installed skill payloads from a verified Skills CLI installation.
 The existing lockfile records that installation.
 
@@ -19,12 +19,6 @@ Validation: the published blue, green, red launchers built the desired state
 in temporary directories with a sanitized environment. Compute documents were
 present and rendered backend configuration contained no credentials. Offline
 builds do not establish live authentication, migrated state, or application health.
-
-Configuration changes:
-
-- Selected the existing workspace R2 backend and enabled compute-require-existing-state. The former local state is retained and must be migrated before create.
-- Made public IPv4 SSH and web access explicit for the provider-independent compute request.
-- Made the existing deployment-owned external identity explicit using its absolute workspace path.
 
 The existing-state guard prevents fresh creation in an empty R2 backend.
 Keep it enabled after transfer; it is not a migration executor.
