@@ -9,7 +9,7 @@ once:
 provider-compute: vultr
 provider-smtp: resend
 provider-dns: cloudflare
-provider-backend: local
+provider-backend: r2
 compute-prevent-destroy: true
 
 vultr-name: once-vultr
@@ -20,3 +20,17 @@ vultr-os-id: 2284
 # The "once-vultr-disposable" key uploaded to the account; its private half
 # lives in this deployment's disposable SSH agent (see .envrc.private).
 vultr-ssh-keys: faa53dae-f289-4bba-bf90-8997131ca40a
+
+# Existing resources require explicit state transfer before create.
+compute-require-existing-state: true
+
+# Shared workspace R2 state backend; credentials stay in the environment.
+r2-bucket: tofu-state-319271fed8bc6d2d9059362be1165f37-eu
+r2-endpoint: https://319271fed8bc6d2d9059362be1165f37.eu.r2.cloudflarestorage.com
+
+# Explicit public IPv4 SSH and web policy for the shared compute request.
+compute-ssh-sources: [0.0.0.0/0]
+compute-http-sources: [0.0.0.0/0]
+
+# Existing disposable external identity documented in CLAUDE.md.
+ssh-private-key-path: /home/ubuntu/code/getcolors/once-vultr/.ssh/id_ed25519
